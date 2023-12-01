@@ -9,12 +9,16 @@
              ((f) #:select (read-lines))
              ((algorithms) #:select (sum zip-with)))
 
+(define (juxt . procs)
+  (λ args
+    (map (λ (proc) (apply proc args)) procs)))
+
 (define (input filename)
    (read-lines filename))
 
 (define (part-1 filename)
   (sum
-    (map (λ (l) (string->number (list->string (list (first l) (last l)))))
+    (map (λ (l) (string->number (list->string ((juxt first last) l))))
       (map (λ (l) (filter char-numeric? l))
         (map string->list (input filename))))))
 
