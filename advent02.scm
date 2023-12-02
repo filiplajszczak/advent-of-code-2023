@@ -6,7 +6,7 @@
                                        test-end
                                        test-equal))
              ((f) #:select (read-lines))
-             ((algorithms) #:select (all? sum)))
+             ((algorithms) #:select (all? sum product)))
 
 
 (define (input filename)
@@ -44,7 +44,7 @@
 
 (define (power game)
   (let ([minimum (fold update (list (cons "green" 0) (cons "blue" 0) (cons "red" 0)) (cdr game))])
-       (* (assoc-ref minimum "green") (assoc-ref minimum "blue") (assoc-ref minimum "red"))))
+       (product (map cdr minimum))))
 
 (define (part-1 filename)
         (fold add-possible 0 (map parse-line (input filename))))
