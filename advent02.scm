@@ -1,8 +1,7 @@
 #!/usr/bin/guile -s
 !#
 
-(use-modules
-             ((srfi srfi-1) #:select (first last fold)
+(use-modules ((srfi srfi-1) #:select (first last fold))
              ((srfi srfi-64) #:select (test-begin
                                        test-end
                                        test-equal))
